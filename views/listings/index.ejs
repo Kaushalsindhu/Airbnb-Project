@@ -1,0 +1,98 @@
+<% layout("/layouts/boilerplate") %>
+<div id="filters">
+
+    <div id="only-filters">
+        <div class="filter">
+                <div class="fil-icon"><i class="fa-solid fa-globe"></i></div>
+                <span style="font-size: 0.8rem">All</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-fire"></i></div>
+            <span style="font-size: 0.8rem">Trending</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-bed"></i></div>
+            <span style="font-size: 0.8rem">Rooms</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-mountain-city"></i></div>
+            <span style="font-size: 0.8rem">Iconic cities</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-mountain"></i></div>
+            <span style="font-size: 0.8rem">Mountains</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-brands fa-fort-awesome"></i></div>
+            <span style="font-size: 0.8rem">Castles</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-water-ladder"></i></div>
+            <span style="font-size: 0.8rem">Pools</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-campground"></i></div>
+            <span style="font-size: 0.8rem">Camping</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-cow"></i></div>
+            <span style="font-size: 0.8rem">Farms</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-snowflake"></i></div>
+            <span style="font-size: 0.8rem">Arctic</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-landmark-dome"></i></div>
+            <span style="font-size: 0.8rem">Domes</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-sailboat"></i></div>
+            <span style="font-size: 0.8rem">Boats</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-tree"></i></div>
+            <span style="font-size: 0.8rem">Parks</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+            <span style="font-size: 0.8rem">Beaches</span>
+        </div>
+        <div class="filter">
+            <div class="fil-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div>
+            <span style="font-size: 0.8rem">Play</span>
+        </div>
+    </div>
+
+    <div class="filter-option mb-3" onclick="openPopup()">
+        <i class="fa-solid fa-bars"></i>
+        <span>Filters</span>
+    </div>
+
+    <div class="tax-toggle mb-3">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+          </div>
+    </div>
+</div> 
+
+<div id="listing-box">
+    <% for(let listing of allListings){ %>
+        <a href="/listings/<%= listing._id %>" id="listing">
+            <div class="card listing-card hidden">
+                <div class="parent">
+                    <img src="<%= listing.image.url %>" class="card-img-top child" alt="listing_image" style="height:20rem">
+                </div>
+                <div class="card-body">
+                    <h7 class="card-text">&nbsp;<b><%= listing.title %></b></h7>
+                    <p class="card-text category" style="display: none"><%=listing.category%></p>
+                    <p class="card-text category" style="display: none"><%=listing.country%></p>
+                    <p class="card-text category" style="display: none"><%=listing.location%></p>
+                    <p class="card-text no-tax">&nbsp; &#8377;<%= (listing.price).toLocaleString("en-IN") %>/night</p> 
+                    <p class="card-text tax" style="display:none">&nbsp; &nbsp; &#8377;<%= (listing.price+((18/100)*listing.price)).toLocaleString("en-IN") %>/night</p>                         
+                </div>
+            </div>
+        </a>
+    <% } %>
+</div>

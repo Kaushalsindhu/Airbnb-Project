@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/navbar.css">
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <section id="header">
+        <div id="brand">
+            <a href="/home"><img src="../assets/airLogo.png" alt="Logo"></a>
+        </div>
+     
+        <div id="search">
+          <input class="search-inp" type="search" placeholder="Search Destination">
+          <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div id="navbar">
+            <a  id="list-btn" href="/listings/new"><i class="fa-solid fa-house-circle-check"></i></a>
+            <div id="user">
+                <i id="hideIcon" class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+
+        <div id="collapse">
+          <%if(!currUser){%> 
+            <a  class="signin" href="/signup"><b>Sign up</b></a>
+            <a  class="signin" href="/login"><b>Log in</b></a>
+          <%}%><%if(currUser){%> 
+            <a  class="signin" href="/logout"><b>Log out</b></a>
+          <%}%> 
+          <i id="cross" class="fa-solid fa-xmark"></i>
+        </div>
+    </section>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>
